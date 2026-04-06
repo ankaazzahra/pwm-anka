@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Ankaa - Portofolio Estetik</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background-color: #faf7f2; /* Warna krem hangat */
+    }
+    h1, h2, .brand {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    /* State Awal Konten (Transparan) */
+    #content {
+      opacity: 0;
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+      transform: translateY(10px);
+    }
+    
+    /* State Masuk (Terlihat) */
+    #content.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Style Navigasi Desktop Aktif */
+    .nav-item.nav-active {
+      color: #78716c; /* stone-700 */
+      position: relative;
+    }
+    .nav-item.nav-active::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #fdba74; /* orange-300 */
+      border-radius: 2px;
+    }
+
+    /* Style Navigasi Bawah Mobile Aktif */
+    .mobile-nav-active {
+      color: #8b5e3c !important; /* Warna coklat hangat */
+      transform: translateY(-5px);
+    }
+    .mobile-nav-active span {
+      background-color: #f5ece0; /* Background krem muda */
+      border-radius: 12px;
+      padding: 4px 12px;
+    }
+
+    /* Hide scrollbar tapi tetap bisa scroll */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    /* Animasi Pulse Custom */
+    @keyframes pulse-soft {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .animate-pulse-soft {
+      animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+  </style>
+</head>
+<body class="text-stone-800 leading-relaxed pb-24 md:pb-0">
+
+  <header class="hidden md:block bg-white/70 backdrop-blur-lg sticky top-0 z-50 border-b border-stone-100">
+    <div class="container mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="brand text-2xl font-bold text-stone-700 italic">Anka.</div>
+      <nav>
+        <ul class="flex space-x-8 text-[10px] font-black uppercase tracking-[0.2em] text-stone-400">
+          <li id="nav-home" data-page="home.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Home</li>
+          <li id="nav-about" data-page="about.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">About</li>
+          <li id="nav-skills" data-page="skills.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Skills</li>
+          <li id="nav-experience" data-page="experience.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Experience</li>
+          <li id="nav-github" data-page="github.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Portfolio</li>
+          <li id="nav-contact" data-page="contact.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Contact</li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="md:hidden flex justify-center py-6">
+    <div class="brand text-3xl font-bold text-stone-700 italic">Anka.</div>
+  </div>
+
+  <main class="container mx-auto px-4 md:px-6">
+    <div class="fixed top-20 left-[-80px] w-64 h-64 bg-stone-200/40 rounded-full blur-[80px] -z-10"></div>
+    <div class="fixed bottom-20 right-[-80px] w-64 h-64 bg-orange-100/30 rounded-full blur-[80px] -z-10"></div>
+
+    <div id="content" class="min-h-[70vh] py-4">
+      </div>
+  </main>
+
+  <nav class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[95%] max-w-sm bg-white/80 backdrop-blur-xl border border-stone-100 shadow-2xl shadow-stone-200/50 rounded-[2.5rem] px-2 py-3 z-50">
+    <ul class="flex justify-around items-center text-[9px] font-bold uppercase tracking-tighter text-stone-400 gap-1">
+      <li data-page="home.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">Home</span>
+      </li>
+      <li data-page="about.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">About</span>
+      </li>
+      <li data-page="skills.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">Skills</span>
+      </li>
+      <li data-page="experience.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">Exp</span>
+      </li>
+      <li data-page="github.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">Work</span>
+      </li>
+      <li data-page="contact.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">Mail</span>
+      </li>
+    </ul>
+  </nav>
+
+  <footer class="hidden md:block text-center py-12 border-t border-stone-200/60 mt-10">
+    <p class="text-stone-400 text-[10px] tracking-widest uppercase">
+      &copy; 2026 Crafted with Love by anka
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
