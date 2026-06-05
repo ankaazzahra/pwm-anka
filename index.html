@@ -7,7 +7,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  
+  <link rel="manifest" href="manifest.json">
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
+</script>
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -85,6 +92,7 @@
           <li id="nav-experience" data-page="experience.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Experience</li>
           <li id="nav-github" data-page="github.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Portfolio</li>
           <li id="nav-contact" data-page="contact.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Contact</li>
+          <li id="nav-contact" data-page="smartcampus.html" class="nav-item cursor-pointer hover:text-stone-700 transition-all">Smart Campus</li>
         </ul>
       </nav>
     </div>
@@ -121,6 +129,9 @@
       </li>
       <li data-page="contact.html" class="nav-item flex flex-col items-center gap-1 transition-all">
         <span class="px-3 py-1">Mail</span>
+      </li>
+      <li data-page="smartcampus.html" class="nav-item flex flex-col items-center gap-1 transition-all">
+        <span class="px-3 py-1">Smart Campus</span>
       </li>
     </ul>
   </nav>
