@@ -1,0 +1,20 @@
+{
+    "name": "CV Ankaa - Portofolio",
+    "short_name": "Ankaa",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#6d6b69",
+    "theme_color": "#6d6b69",
+    "icons": [
+      {
+        "src": "anka.jpeg",
+        "sizes": "192x192",
+        "type": "image/jpeg"
+      },
+      {
+        "src": "anka.jpeg",
+        "sizes": "512x512",
+        "type": "image/jpeg"
+      }
+    ]
+  }
