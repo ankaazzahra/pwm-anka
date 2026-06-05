@@ -3,26 +3,26 @@ const ASSETS = [
   '/',
   '/index.html',
   '/script.js',
-  'splash.jpeg',
-  'login.jpeg',
-  'dashboard.jpeg',
-  'anka.jpeg'
+  '/anka.png',
+  '/splash.jpeg',
+  '/login.jpeg',
+  '/dashboard.jpeg'
 ];
 
-// Install service worker
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    })
+  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => response || fetch(event.request))
   );
 });
 
-// Fetch dari cache
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => Promise.all(keys.map((key) => {
+      if (key !== CACHE_NAME) return caches.delete(key);
+    })))
   );
 });
